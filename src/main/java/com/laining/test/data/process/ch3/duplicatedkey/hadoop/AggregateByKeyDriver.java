@@ -29,8 +29,8 @@ public class AggregateByKeyDriver extends Configured implements Tool {
 		job.setOutputValueClass(IntWritable.class);
 
 		job.setMapperClass(AggregateByKeyMapper.class);
+		job.setCombinerClass(AggregateByKeyReducer.class);
 		job.setReducerClass(AggregateByKeyReducer.class);
-		// job.setCombinerClass(AggregateByKeyReducer.class);
 
 		FileInputFormat.setInputPaths(job, new Path(args[0]));
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
